@@ -6,7 +6,7 @@ import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Navbar() {
   return (
     <>
-      {/* Top Bar - Visible only on large screens */}
+      {/* Top Bar - Only visible on large screens */}
       <div className="container-fluid bg-light p-0 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-7 px-5 text-start">
@@ -34,7 +34,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Navbar */}
       <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <div className="container-fluid">
           <Link href="/accueil" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -44,8 +44,9 @@ export default function Navbar() {
             </h2>
           </Link>
 
+          {/* Toggle Button */}
           <button
-            className="navbar-toggler"
+            className="navbar-toggler me-4"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarCollapse"
@@ -56,15 +57,18 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
+          {/* Collapsible Menu */}
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
               <Link href="/accueil" className="nav-item nav-link">Acceuil</Link>
               <Link href="/services" className="nav-item nav-link">Nos services</Link>
               <Link href="/contact" className="nav-item nav-link">Contact</Link>
             </div>
+
+            {/* Button: Large Screens */}
             <div className="d-none d-lg-block">
-              <Link 
-                href="/rendezvous" 
+              <Link
+                href="/rendezvous"
                 className="btn py-4 px-lg-5"
                 style={{ backgroundColor: '#d81313', color: '#fff' }}
               >
@@ -72,10 +76,12 @@ export default function Navbar() {
                 <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
               </Link>
             </div>
-            <div className="d-block d-lg-none mt-3 px-4">
-              <Link 
-                href="/rendezvous" 
-                className="btn btn-block w-100"
+
+            {/* Button: Mobile Screens */}
+            <div className="d-lg-none p-4 pt-0">
+              <Link
+                href="/rendezvous"
+                className="btn w-100"
                 style={{ backgroundColor: '#d81313', color: '#fff' }}
               >
                 Prendre un rendez-vous
