@@ -7,11 +7,13 @@ import Footer from "../components/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 
-// Move Bootstrap import to a client-only context
+// Client-side Bootstrap component with error handling
 const BootstrapClient = () => {
   useEffect(() => {
-    // Only import Bootstrap on the client side
-    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    if (typeof window !== 'undefined') {
+      import('bootstrap/dist/js/bootstrap.bundle.min.js')
+        .catch(err => console.error('Bootstrap failed to load:', err));
+    }
   }, []);
   
   return null;
@@ -19,21 +21,32 @@ const BootstrapClient = () => {
 
 export default function Accueil() {
   const [isLoading, setIsLoading] = useState(true);
-
-  // Safe initialization of WOW.js
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      import('wowjs').then((module) => {
-        const WOW = module.WOW;
-        new WOW().init();
-      });
-    }
-  }, []);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Initialize WOW.js only on client side after mount
+  useEffect(() => {
+    if (isMounted && typeof window !== 'undefined') {
+      import('wowjs')
+        .then((module) => {
+          try {
+            const WOW = module.default?.WOW || module.WOW;
+            new WOW({
+              live: false, // Disable live reload for better performance
+              mobile: false // Disable on mobile for better UX
+            }).init();
+          } catch (err) {
+            console.error('WOW.js initialization error:', err);
+          }
+        })
+        .catch(err => console.error('WOW.js failed to load:', err));
+    }
+  }, [isMounted]);
 
   if (isLoading) {
     return (
@@ -89,64 +102,64 @@ export default function Accueil() {
 
   return (
     <>
-      {/* Import Bootstrap on client-side only */}
       <BootstrapClient />
-      
       <Navbar />
 
-      {/* Carousel */}
-      <div className="container-fluid p-0 mb-5">
-        <div id="header-carousel" className="carousel slide" data-bs-ride="carousel">
-          <div className="carousel-inner">
-            {[1, 2].map((i) => (
-              <div key={i} className={`carousel-item ${i === 1 ? "active" : ""}`}>
-                <Image
-                  src={`/img/carousel-bg-${i}.jpg`}
-                  alt={`Slide ${i}`}
-                  width={1920}
-                  height={800}
-                  className="d-block w-100"
-                  priority={i === 1}
-                />
-                <div className="carousel-caption d-flex align-items-center">
-                  <div className="container">
-                    <div className="row align-items-center justify-content-center justify-content-lg-start">
-                      <div className="col-10 col-lg-7 text-center text-lg-start">
-                        <h6 className="text-white text-uppercase mb-3 animated slideInDown">Service Auto</h6>
-                        <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
-                          Centre de services automobile qualifié
-                        </h1>
-                        <a href="/services" className="btn py-3 px-5 animated slideInDown"
-                          style={{ backgroundColor: '#d81313', borderColor: '#dc3545', color: 'white' }}>
-                          En savoir plus<i className="fa fa-arrow-right ms-3"></i>
-                        </a>
-                      </div>
-                      <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
-                        <Image
-                          src={`/img/carousel-${i}.png`}
-                          alt={`Car carousel ${i}`}
-                          className="img-fluid"
-                          width={600}
-                          height={600}
-                        />
+      {/* Carousel - Only render if mounted */}
+      {isMounted && (
+        <div className="container-fluid p-0 mb-5">
+          <div id="header-carousel" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {[1, 2].map((i) => (
+                <div key={i} className={`carousel-item ${i === 1 ? "active" : ""}`}>
+                  <Image
+                    src={`/img/carousel-bg-${i}.jpg`}
+                    alt={`Slide ${i}`}
+                    width={1920}
+                    height={800}
+                    className="d-block w-100"
+                    priority={i === 1}
+                  />
+                  <div className="carousel-caption d-flex align-items-center">
+                    <div className="container">
+                      <div className="row align-items-center justify-content-center justify-content-lg-start">
+                        <div className="col-10 col-lg-7 text-center text-lg-start">
+                          <h6 className="text-white text-uppercase mb-3 animated slideInDown">Service Auto</h6>
+                          <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
+                            Centre de services automobile qualifié
+                          </h1>
+                          <a href="/services" className="btn py-3 px-5 animated slideInDown"
+                            style={{ backgroundColor: '#d81313', borderColor: '#dc3545', color: 'white' }}>
+                            En savoir plus<i className="fa fa-arrow-right ms-3"></i>
+                          </a>
+                        </div>
+                        <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
+                          <Image
+                            src={`/img/carousel-${i}.png`}
+                            alt={`Car carousel ${i}`}
+                            className="img-fluid"
+                            width={600}
+                            height={600}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <button className="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon"></span>
-            <span className="visually-hidden">Précédent</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span className="carousel-control-next-icon"></span>
-            <span className="visually-hidden">Suivant</span>
-          </button>
+            <button className="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon"></span>
+              <span className="visually-hidden">Précédent</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+              <span className="carousel-control-next-icon"></span>
+              <span className="visually-hidden">Suivant</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Services */}
       <div className="container-xxl py-5">
