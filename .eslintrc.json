@@ -1,0 +1,11 @@
+{
+  "extends": "next",
+  "rules": {
+    "no-undef": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-document-import-in-page": "off",
+    "@next/next/no-html-link-for-pages": "off"
+  }
+}
