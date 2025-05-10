@@ -60,58 +60,52 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Fixed Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top p-0" style={{ backgroundColor: '#fff' }}>
-        <div className="container-fluid">
-          <Link className="navbar-brand d-flex align-items-center px-4 px-lg-5" href="#">
-            <h2 className="m-0" style={{ color: '#d81313' }}>
-              <FontAwesomeIcon icon={faCar} className="me-3" />
-              ValidAuto
-            </h2>
-          </Link>
-
-          {/* Hamburger Icon on Mobile */}
-          <button
-            className="navbar-toggler me-4"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          {/* Navbar Links */}
-          <div className="collapse navbar-collapse" id="nav-item nav-link">
-            <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <Link className="nav-item nav-link" href="#">Accueil</Link>
-              <Link className="nav-item nav-link" href="#">Nos services</Link>
-              <Link className="nav-item nav-link" href="#">Contact</Link>
-              <div className="d-lg-none mt-3">
-                <button
-                  type="button"
-                  className="btn w-100"
-                  style={{ backgroundColor: '#d81313', color: '#fff' }}
-                >
-                  Prendre un rendez-vous
-                </button>
+      {/* Fixed Navbar with Next.js links */}
+      <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <Link href="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <h2 className="m-0 text-primary">
+            <FontAwesomeIcon icon={faCar} className="me-3" />
+            ValidAuto
+          </h2>
+        </Link>
+        <button
+          type="button"
+          className="navbar-toggler me-4"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarCollapse">
+          <div className="navbar-nav ms-auto p-4 p-lg-0">
+            <Link href="/" className="nav-item nav-link active">Accueil</Link>
+            <Link href="/about" className="nav-item nav-link">About</Link>
+            <Link href="/service" className="nav-item nav-link">Nos services</Link>
+            <div className="nav-item dropdown">
+              <a
+                href="#"
+                className="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Pages
+              </a>
+              <div className="dropdown-menu fade-up m-0">
+                <Link href="/booking" className="dropdown-item">Réservations</Link>
+                <Link href="/team" className="dropdown-item">Techniciens</Link>
+                <Link href="/testimonial" className="dropdown-item">Testament</Link>
+                <Link href="/404" className="dropdown-item">404 Page</Link>
               </div>
             </div>
+            <Link href="/contact" className="nav-item nav-link">Contact</Link>
           </div>
-
-          {/* Desktop Button */}
-          <div className="d-none d-lg-block">
-            <button
-              type="button"
-              className="btn py-4 px-lg-5"
-              style={{ backgroundColor: '#d81313', color: '#fff' }}
-            >
-              Prendre un rendez-vous
-              <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
-            </button>
-          </div>
+          <Link href="/booking" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+            Prendre un rendez-vous
+            <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
+          </Link>
         </div>
       </nav>
     </>
