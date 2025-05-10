@@ -69,7 +69,7 @@ export default function Navbar() {
             </h2>
           </a>
 
-          {/* Hamburger Icon on mobile */}
+          {/* Hamburger Icon on Mobile */}
           <button
             className="navbar-toggler me-4"
             type="button"
@@ -85,9 +85,9 @@ export default function Navbar() {
           {/* Navbar Links */}
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
-              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
-              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
+              <a className="nav-item nav-link" href="/accueil">Accueil</a>
+              <a className="nav-item nav-link" href="/services">Nos services</a>
+              <a className="nav-item nav-link" href="/contact">Contact</a>
               <div className="d-lg-none mt-3">
                 <button
                   type="button"
