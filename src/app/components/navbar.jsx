@@ -69,21 +69,38 @@ export default function Navbar() {
             </h2>
           </a>
 
-          <div className="navbar-nav ms-auto p-4 p-lg-0">
-            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
-            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
-            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
-            <div className="d-lg-none mt-3">
-              <button
-                type="button"
-                className="btn w-100"
-                style={{ backgroundColor: '#d81313', color: '#fff' }}
-              >
-                Prendre un rendez-vous
-              </button>
+          {/* Hamburger Icon on mobile */}
+          <button
+            className="navbar-toggler me-4"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Navbar Links */}
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <div className="navbar-nav ms-auto p-4 p-lg-0">
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
+              <div className="d-lg-none mt-3">
+                <button
+                  type="button"
+                  className="btn w-100"
+                  style={{ backgroundColor: '#d81313', color: '#fff' }}
+                >
+                  Prendre un rendez-vous
+                </button>
+              </div>
             </div>
           </div>
-          
+
+          {/* Desktop Button */}
           <div className="d-none d-lg-block">
             <button
               type="button"
