@@ -1,32 +1,12 @@
-'use client';
-
-import { useEffect } from 'react';
+"use client";
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Link from 'next/link';
 
 export default function Navbar() {
-  useEffect(() => {
-    import('bootstrap/dist/js/bootstrap.bundle.min.js');
-
-    // Add top padding to body to make room for fixed navbar
-    const updateBodyPadding = () => {
-      const navbar = document.querySelector('.navbar');
-      if (navbar) {
-        const height = navbar.clientHeight;
-        document.body.style.paddingTop = `${height}px`;
-      }
-    };
-
-    updateBodyPadding();
-    window.addEventListener('resize', updateBodyPadding);
-    return () => window.removeEventListener('resize', updateBodyPadding);
-  }, []);
-
   return (
     <>
-      {/* Top Bar */}
+      {/* Top Bar - Custom Red Icons */}
       <div className="container-fluid bg-light p-0 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-7 px-5 text-start">
@@ -45,67 +25,63 @@ export default function Navbar() {
               <small>0770145404</small>
             </div>
             <div className="h-100 d-inline-flex align-items-center">
-              {['facebook-f', 'instagram', 'twitter', 'linkedin-in'].map((icon, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className="btn btn-sm-square bg-white me-1"
-                  style={{ color: '#d81313' }}
-                >
-                  <i className={`fab fa-${icon}`}></i>
-                </button>
-              ))}
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Fixed Navbar with Next.js links */}
+      {/* Main Navbar */}
       <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <Link href="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
-          <h2 className="m-0 text-primary">
-            <FontAwesomeIcon icon={faCar} className="me-3" />
-            ValidAuto
-          </h2>
-        </Link>
-        <button
-          type="button"
-          className="navbar-toggler me-4"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
-          <div className="navbar-nav ms-auto p-4 p-lg-0">
-            <Link href="/" className="nav-item nav-link active">Accueil</Link>
-            <Link href="/about" className="nav-item nav-link">About</Link>
-            <Link href="/service" className="nav-item nav-link">Nos services</Link>
-            <div className="nav-item dropdown">
-              <a
-                href="#"
-                className="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Pages
-              </a>
-              <div className="dropdown-menu fade-up m-0">
-                <Link href="/booking" className="dropdown-item">Réservations</Link>
-                <Link href="/team" className="dropdown-item">Techniciens</Link>
-                <Link href="/testimonial" className="dropdown-item">Testament</Link>
-                <Link href="/404" className="dropdown-item">404 Page</Link>
-              </div>
-            </div>
-            <Link href="/contact" className="nav-item nav-link">Contact</Link>
-          </div>
-          <Link href="/booking" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-            Prendre un rendez-vous
-            <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
+        <div className="container-fluid">
+          <Link href="/accueil" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 className="m-0" style={{ color: '#d81313' }}>
+              <FontAwesomeIcon icon={faCar} className="me-3" style={{ color: '#d81313' }} />
+              ValidAuto
+            </h2>
           </Link>
+
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="flex space-x-6" id="navbarCollapse">
+            <div className="navbar-nav ms-auto p-4 p-lg-0">
+              <Link href="/accueil" className="nav-item nav-link">
+                Acceuil
+              </Link>
+              <Link href="/services" className="nav-item nav-link">
+                Nos services
+              </Link>
+              <Link href="/contact" className="nav-item nav-link">
+                Contact
+              </Link>
+            </div>
+            <Link 
+              href="/rendezvous" 
+              className="btn py-4 px-lg-5 d-none d-lg-block"
+              style={{ backgroundColor: '#d81313', color: '#fff' }}
+            >
+              Prendre un rendez-vous
+              <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
+            </Link>
+          </div>
         </div>
       </nav>
     </>
