@@ -6,6 +6,12 @@ import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Navbar() {
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
+
+    // Add top padding to body to make room for fixed navbar
+    if (typeof window !== 'undefined') {
+      const navbarHeight = document.querySelector('.navbar')?.clientHeight || 70;
+      document.body.style.paddingTop = `${navbarHeight}px`;
+    }
   }, []);
 
   return (
@@ -38,8 +44,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+      {/* Fixed Navbar */}
+      <nav className="navbar navbar-expand-lg bg-white navbar-light shadow fixed-top p-0">
         <div className="container-fluid">
           <div className="navbar-brand d-flex align-items-center px-4 px-lg-5" style={{ cursor: 'pointer' }}>
             <h2 className="m-0" style={{ color: '#d81313' }}>
