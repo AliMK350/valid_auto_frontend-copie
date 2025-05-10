@@ -6,7 +6,7 @@ import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Navbar() {
   return (
     <>
-      {/* Top Bar - Custom Red Icons */}
+      {/* Top Bar - Visible only on large screens */}
       <div className="container-fluid bg-light p-0 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-7 px-5 text-start">
@@ -25,18 +25,10 @@ export default function Navbar() {
               <small>0770145404</small>
             </div>
             <div className="h-100 d-inline-flex align-items-center">
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-facebook-f"></i></a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-instagram"></i></a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-twitter"></i></a>
+              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
@@ -47,7 +39,7 @@ export default function Navbar() {
         <div className="container-fluid">
           <Link href="/accueil" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 className="m-0" style={{ color: '#d81313' }}>
-              <FontAwesomeIcon icon={faCar} className="me-3" style={{ color: '#d81313' }} />
+              <FontAwesomeIcon icon={faCar} className="me-3" />
               ValidAuto
             </h2>
           </Link>
@@ -57,30 +49,38 @@ export default function Navbar() {
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="flex space-x-6" id="navbarCollapse">
+          <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <Link href="/accueil" className="nav-item nav-link">
-                Acceuil
-              </Link>
-              <Link href="/services" className="nav-item nav-link">
-                Nos services
-              </Link>
-              <Link href="/contact" className="nav-item nav-link">
-                Contact
+              <Link href="/accueil" className="nav-item nav-link">Acceuil</Link>
+              <Link href="/services" className="nav-item nav-link">Nos services</Link>
+              <Link href="/contact" className="nav-item nav-link">Contact</Link>
+            </div>
+            <div className="d-none d-lg-block">
+              <Link 
+                href="/rendezvous" 
+                className="btn py-4 px-lg-5"
+                style={{ backgroundColor: '#d81313', color: '#fff' }}
+              >
+                Prendre un rendez-vous
+                <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
               </Link>
             </div>
-            <Link 
-              href="/rendezvous" 
-              className="btn py-4 px-lg-5 d-none d-lg-block"
-              style={{ backgroundColor: '#d81313', color: '#fff' }}
-            >
-              Prendre un rendez-vous
-              <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
-            </Link>
+            <div className="d-block d-lg-none mt-3 px-4">
+              <Link 
+                href="/rendezvous" 
+                className="btn btn-block w-100"
+                style={{ backgroundColor: '#d81313', color: '#fff' }}
+              >
+                Prendre un rendez-vous
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
