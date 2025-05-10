@@ -1,11 +1,14 @@
 "use client";
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
+
+// Import Bootstrap JS dynamically to avoid SSR issues
+useEffect(() => {
+  import('bootstrap/dist/js/bootstrap.bundle.min.js');
+}, []);
+
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
-// Import Bootstrap JS globally
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function Navbar() {
   return (
