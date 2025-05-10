@@ -84,7 +84,7 @@ export default function Navbar() {
           </button>
 
           {/* Navbar Links */}
-          <div className="collapse navbar-collapse" id="navbarCollapse">
+          <div className="collapse navbar-collapse" id="nav-item nav-link">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
               <Link className="nav-item nav-link" href="#">Accueil</Link>
               <Link className="nav-item nav-link" href="#">Nos services</Link>
