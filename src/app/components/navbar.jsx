@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Link from 'next/link';
 
 export default function Navbar() {
   useEffect(() => {
@@ -62,12 +63,12 @@ export default function Navbar() {
       {/* Fixed Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top p-0" style={{ backgroundColor: '#fff' }}>
         <div className="container-fluid">
-          <a className="navbar-brand d-flex align-items-center px-4 px-lg-5" href="#">
+          <Link className="navbar-brand d-flex align-items-center px-4 px-lg-5" href="#">
             <h2 className="m-0" style={{ color: '#d81313' }}>
               <FontAwesomeIcon icon={faCar} className="me-3" />
               ValidAuto
             </h2>
-          </a>
+          </Link>
 
           {/* Hamburger Icon on Mobile */}
           <button
@@ -85,9 +86,9 @@ export default function Navbar() {
           {/* Navbar Links */}
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <a className="nav-item nav-link" href="/accueil">Accueil</a>
-              <a className="nav-item nav-link" href="/services">Nos services</a>
-              <a className="nav-item nav-link" href="/contact">Contact</a>
+              <Link className="nav-item nav-link" href="#">Accueil</Link>
+              <Link className="nav-item nav-link" href="#">Nos services</Link>
+              <Link className="nav-item nav-link" href="#">Contact</Link>
               <div className="d-lg-none mt-3">
                 <button
                   type="button"
