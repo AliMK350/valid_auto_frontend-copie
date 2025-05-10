@@ -1,9 +1,13 @@
 "use client";
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
+  useEffect(() => {
+    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, [])
   return (
     <>
       {/* Top Bar - Only visible on large screens */}
