@@ -1,15 +1,12 @@
 "use client";
 import { useEffect } from 'react';
-
-// Import Bootstrap JS dynamically to avoid SSR issues
-import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
   useEffect(() => {
-  import('bootstrap/dist/js/bootstrap.bundle.min.js');
-}, []);
+    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, []);
 
   return (
     <>
@@ -32,10 +29,10 @@ export default function Navbar() {
               <small>0770145404</small>
             </div>
             <div className="h-100 d-inline-flex align-items-center">
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-facebook-f"></i></a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-instagram"></i></a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-twitter"></i></a>
-              <a className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }} href="#"><i className="fab fa-linkedin-in"></i></a>
+              <button className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }}><i className="fab fa-facebook-f"></i></button>
+              <button className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }}><i className="fab fa-instagram"></i></button>
+              <button className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }}><i className="fab fa-twitter"></i></button>
+              <button className="btn btn-sm-square bg-white me-1" style={{ color: '#d81313' }}><i className="fab fa-linkedin-in"></i></button>
             </div>
           </div>
         </div>
@@ -44,12 +41,12 @@ export default function Navbar() {
       {/* Main Navbar */}
       <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <div className="container-fluid">
-          <Link href="/accueil" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <button className="navbar-brand d-flex align-items-center px-4 px-lg-5 btn" style={{ border: 'none', background: 'none' }}>
             <h2 className="m-0" style={{ color: '#d81313' }}>
               <FontAwesomeIcon icon={faCar} className="me-3" />
               ValidAuto
             </h2>
-          </Link>
+          </button>
 
           <button
             className="navbar-toggler me-4"
@@ -65,28 +62,26 @@ export default function Navbar() {
 
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <Link href="/accueil" className="nav-item nav-link">Acceuil</Link>
-              <Link href="/services" className="nav-item nav-link">Nos services</Link>
-              <Link href="/contact" className="nav-item nav-link">Contact</Link>
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
+              <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
               <div className="d-lg-none mt-3">
-                <Link
-                  href="/rendezvous"
+                <button
                   className="btn w-100"
                   style={{ backgroundColor: '#d81313', color: '#fff' }}
                 >
                   Prendre un rendez-vous
-                </Link>
+                </button>
               </div>
             </div>
             <div className="d-none d-lg-block">
-              <Link
-                href="/rendezvous"
+              <button
                 className="btn py-4 px-lg-5"
                 style={{ backgroundColor: '#d81313', color: '#fff' }}
               >
                 Prendre un rendez-vous
                 <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
