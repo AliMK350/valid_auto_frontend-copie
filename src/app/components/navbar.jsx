@@ -9,7 +9,7 @@ export default function Navbar() {
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
 
-    // Fix top padding for fixed-top navbar
+    // Add top padding to body to make room for fixed navbar
     const updateBodyPadding = () => {
       const navbar = document.querySelector('.navbar');
       if (navbar) {
@@ -59,8 +59,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="navbar navbar-expand-lg bg-white navbar-light shadow fixed-top p-0">
+      {/* Fixed Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-light shadow fixed-top p-0" style={{ backgroundColor: '#fff' }}>
         <div className="container-fluid">
           <a className="navbar-brand d-flex align-items-center px-4 px-lg-5" href="#">
             <h2 className="m-0" style={{ color: '#d81313' }}>
@@ -69,41 +69,30 @@ export default function Navbar() {
             </h2>
           </a>
 
-          <button
-            className="navbar-toggler me-4"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav ms-auto p-4 p-lg-0">
-              {['Accueil', 'Nos services', 'Contact'].map((item, idx) => (
-                <li className="nav-item" key={idx}>
-                  <a className="nav-link" href="#">{item}</a>
-                </li>
-              ))}
-              <li className="d-lg-none mt-3">
-                <button className="btn w-100" style={{ backgroundColor: '#d81313', color: '#fff' }}>
-                  Prendre un rendez-vous
-                </button>
-              </li>
-            </ul>
-            <div className="d-none d-lg-block">
+          <div className="navbar-nav ms-auto p-4 p-lg-0">
+            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
+            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
+            <button className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
+            <div className="d-lg-none mt-3">
               <button
                 type="button"
-                className="btn py-4 px-lg-5"
+                className="btn w-100"
                 style={{ backgroundColor: '#d81313', color: '#fff' }}
               >
                 Prendre un rendez-vous
-                <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
               </button>
             </div>
+          </div>
+          
+          <div className="d-none d-lg-block">
+            <button
+              type="button"
+              className="btn py-4 px-lg-5"
+              style={{ backgroundColor: '#d81313', color: '#fff' }}
+            >
+              Prendre un rendez-vous
+              <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
+            </button>
           </div>
         </div>
       </nav>
