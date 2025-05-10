@@ -45,55 +45,22 @@ export default function Navbar() {
       </div>
 
       {/* Fixed Navbar */}
-      <nav className="navbar navbar-expand-lg bg-white navbar-light shadow fixed-top p-0">
-        <div className="container-fluid">
-          <div className="navbar-brand d-flex align-items-center px-4 px-lg-5" style={{ cursor: 'pointer' }}>
-            <h2 className="m-0" style={{ color: '#d81313' }}>
-              <FontAwesomeIcon icon={faCar} className="me-3" />
-              ValidAuto
-            </h2>
-          </div>
+      <nav className="navbar navbar-expand-lg bg-light fixed-top">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">ValidAuto</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#testNav">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="testNav">
+      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li className="nav-item"><a className="nav-link" href="#">Accueil</a></li>
+        <li className="nav-item"><a className="nav-link" href="#">Services</a></li>
+        <li className="nav-item"><a className="nav-link" href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-          <button
-            className="navbar-toggler me-4"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <button type="button" className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Accueil</button>
-              <button type="button" className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Nos services</button>
-              <button type="button" className="nav-item nav-link btn" style={{ background: 'none', border: 'none' }}>Contact</button>
-              <div className="d-lg-none mt-3">
-                <button
-                  type="button"
-                  className="btn w-100"
-                  style={{ backgroundColor: '#d81313', color: '#fff' }}
-                >
-                  Prendre un rendez-vous
-                </button>
-              </div>
-            </div>
-            <div className="d-none d-lg-block">
-              <button
-                type="button"
-                className="btn py-4 px-lg-5"
-                style={{ backgroundColor: '#d81313', color: '#fff' }}
-              >
-                Prendre un rendez-vous
-                <FontAwesomeIcon icon={faArrowRight} className="ms-3" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
     </>
   );
 }
