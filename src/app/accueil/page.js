@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "../components/navbar";
@@ -15,12 +16,10 @@ export default function Accueil() {
   }, []);
 
   useEffect(() => {
-    // This useEffect runs only on the client side
     if (typeof window !== "undefined") {
-      // Ensure Bootstrap's JS functions are only initialized on the client-side
-      require('bootstrap/dist/js/bootstrap.bundle.min.js');
+      import("bootstrap/dist/js/bootstrap.bundle.min.js");
     }
-  }, []); // Empty dependency array ensures this runs only once when the component mounts
+  }, []);
 
   if (isLoading) {
     return (
@@ -96,15 +95,16 @@ export default function Accueil() {
                   <div className="container">
                     <div className="row align-items-center justify-content-center justify-content-lg-start">
                       <div className="col-10 col-lg-7 text-center text-lg-start">
-                        <h6 className="text-white text-uppercase mb-3">Service Auto</h6>
-                        <h1 className="display-3 text-white mb-4 pb-3">
+                        <h6 className="text-white text-uppercase mb-3 animated slideInDown">Service Auto</h6>
+                        <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
                           Centre de services automobile qualifié
                         </h1>
-                        <a href="/services" className="btn py-3 px-5" style={{ backgroundColor: '#d81313', borderColor: '#dc3545', color: 'white' }}>
+                        <a href="/services" className="btn py-3 px-5 animated slideInDown"
+                          style={{ backgroundColor: '#d81313', borderColor: '#dc3545', color: 'white' }}>
                           En savoir plus<i className="fa fa-arrow-right ms-3"></i>
                         </a>
                       </div>
-                      <div className="col-lg-5 d-none d-lg-flex">
+                      <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
                         <Image
                           src={`/img/carousel-${i}.png`}
                           alt={`Car carousel ${i}`}
@@ -136,7 +136,7 @@ export default function Accueil() {
         <div className="container">
           <div className="row g-4">
             {services.map((s, i) => (
-              <div key={i} className={`col-lg-4 col-md-6`}>
+              <div key={i} className={`col-lg-4 col-md-6 wow fadeInUp`} data-wow-delay={`${0.1 + i * 0.2}s`}>
                 <div className={`d-flex py-5 px-4 ${s.bg || ""}`}>
                   <i className={`fa ${s.icon} fa-3x flex-shrink-0`} style={{ color: '#d81313' }}></i>
                   <div className="ps-4">
@@ -156,7 +156,7 @@ export default function Accueil() {
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-6 pt-4" style={{ minHeight: "400px" }}>
-              <div className="position-relative h-100">
+              <div className="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
                 <Image
                   src="/img/about.jpg"
                   alt="À propos"
@@ -177,7 +177,7 @@ export default function Accueil() {
               <p className="mb-4">Chez ValidAuto, votre véhicule bénéficie d’un contrôle de qualité, réalisé par des experts avec un équipement de pointe pour une sécurité optimale.</p>
               <div className="row g-4 mb-3 pb-3">
                 {aboutFeatures.map((item, i) => (
-                  <div key={i} className="col-12">
+                  <div key={i} className="col-12 wow fadeIn" data-wow-delay={`${0.1 + i * 0.2}s`}>
                     <div className="d-flex">
                       <div className="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style={{ width: "45px", height: "45px" }}>
                         <span className="fw-bold text-secondary">{item.num}</span>
@@ -203,14 +203,37 @@ export default function Accueil() {
         <div className="container">
           <div className="row g-4">
             {stats.map((fact, i) => (
-              <div key={i} className="col-md-6 col-lg-3 text-center">
-                <div className="fact-item bg-light rounded py-5 px-4">
-                  <FontAwesomeIcon icon={fact.icon} className="fa-3x mb-3" style={{ color: '#d81313' }} />
-                  <h1 className="text-primary mb-3">{fact.value}</h1>
-                  <span className="fs-5 text-uppercase">{fact.label}</span>
-                </div>
+              <div key={i} className="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay={`${0.1 + i * 0.2}s`}>
+                <i className={`fa ${fact.icon} fa-2x text-white mb-3`}></i>
+                <h2 className="text-white mb-2">{fact.value}</h2>
+                <p className="text-white mb-0">{fact.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div className="container">
+          <div className="row g-4">
+            <div className="col-lg-8 col-md-6">
+              <h6 style={{ color: '#d81313' }} className="text-uppercase">Appelez dès maintenant</h6>
+              <h1 className="mb-4">Vous avez des questions avant de réserver ?</h1>
+              <p className="mb-0">
+                Notre équipe est là pour répondre à toutes vos questions avant la prise de rendez-vous. Que ce soit pour les documents à fournir, les tarifs ou les délais, n'hésitez pas à nous contacter.
+              </p>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="d-flex flex-column justify-content-center text-center h-100 p-4" style={{ backgroundColor: '#d81313' }}>
+                <h3 className="text-white mb-4">
+                  <i className="fa fa-phone-alt me-3"></i>+212 770 145 404
+                </h3>
+                <a href="/contact" className="btn btn-secondary py-3 px-5" style={{backgroundColor: 'black'}}>
+                  Contactez-nous<i className="fa fa-arrow-right ms-3"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
