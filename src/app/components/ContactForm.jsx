@@ -104,7 +104,7 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <center><button type="submit" className="btn btn-primary" style={{backgroundColor:'red'}}>Envoyer</button></center>
+      <center><button type="submit" className="btn btn-primary" style={{backgroundColor:'red'}}>S'inscrire</button></center>
     </form>
   );
 }

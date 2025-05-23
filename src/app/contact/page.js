@@ -58,7 +58,7 @@ export default function Contact() {
       <div className="container-xxl py-5">
         <div className="container">
           <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 className="text-primary text-uppercase">// Contact Us //</h6>
+            <h6 className="text-primary text-uppercase" style={{color: "red"}}>Contactez-nous</h6>
             <h1 className="mb-5">Contactez-nous pour toute question</h1>
             <p></p>
           </div>
@@ -81,6 +81,8 @@ export default function Contact() {
             </div>
 
             <div className="col-md-6">
+              <h3>Inscription</h3>
+              <p><i className="fa fa-user-plus" style={{color: "red"}} aria-hidden="true"></i> Inscrivez-vous dès maintenant</p>
               <ContactForm />
             </div>
           </div>
